@@ -1,0 +1,73 @@
+# Phishing Website Detection using Machine Learning
+
+Academic project comparing 5 supervised machine learning models to automatically detect phishing websites, based on URL and domain-based features.
+
+**Authors:** Chaymae Hanida, Aya El Hadri
+**Institution:** Faculty of Sciences Dhar El Mahraz (FSDM), Sidi Mohamed Ben Abdellah University (USMBA), Fes, Morocco
+**Status:** Completed — formally documented and presented before an academic jury.
+
+## Overview
+
+Phishing websites imitate legitimate ones to steal sensitive user information (credentials, banking data, etc.). This project builds and compares supervised classifiers that automatically flag a website as **phishing** or **legitimate** based on 30 structural and behavioral features of its URL.
+
+## Dataset
+
+- **Size:** 11,054 websites
+- **Features:** 30 binary/categorical features (e.g. `UsingIP`, `LongURL`, `HTTPS`, `AnchorURL`, `AgeofDomain`, `WebsiteTraffic`, `PageRank`, `GoogleIndex`)
+- **Target:** `class` — `1` (legitimate) / `-1` (phishing)
+- File: [`data/phishing.csv`](data/phishing.csv)
+
+## Methodology
+
+1. Drop the non-predictive `Index` column.
+2. Split features (`X`) and target (`y`).
+3. 80/20 train-test split, stratified on the target.
+4. Standardize features with `StandardScaler` (for Logistic Regression, KNN, SVM).
+5. Train and evaluate 5 models: Logistic Regression, KNN, Decision Tree, Random Forest, SVM.
+6. Compare models on accuracy, precision, recall, and F1-score.
+7. Analyze feature importance using the best-performing model.
+
+## Results
+
+| Model | Accuracy | Precision | Recall | F1-score | Rank |
+|---|---|---|---|---|---|
+| **Random Forest** | **97.38%** | **96.88%** | **98.46%** | **97.67%** | 🥇 1st |
+| SVM (RBF kernel) | 96.02% | 95.40% | 97.56% | 96.47% | 🥈 2nd |
+| KNN (k=5) | 94.08% | 94.44% | 95.05% | 94.74% | 🥉 3rd |
+| Logistic Regression | 93.89% | 94.06% | 95.05% | 94.55% | 4th |
+| Decision Tree (max_depth=5) | 93.35% | 91.76% | 96.75% | 94.19% | 5th |
+
+**Random Forest** achieved the best performance, thanks to its ensemble of 200 trees voting by majority — resistant to overfitting and able to capture non-linear relationships between features.
+
+**Most discriminant features:** `HTTPS` and `AnchorURL` — phishing sites typically avoid valid SSL certificates and rely on suspicious anchor links.
+
+## Project structure
+
+```
+phishing-website-detection-ml/
+├── data/
+│   └── phishing.csv                  # dataset (11,054 websites, 30 features)
+├── notebooks/
+│   └── phishing_detection.ipynb      # full analysis: preprocessing, training, evaluation
+├── results/
+│   └── model_accuracy_comparison.csv # generated after running the notebook
+├── requirements.txt
+└── README.md
+```
+
+## How to run
+
+```bash
+git clone https://github.com/CHAYMAEHANIDA123/phishing-website-detection-ml.git
+cd phishing-website-detection-ml
+pip install -r requirements.txt
+jupyter notebook notebooks/phishing_detection.ipynb
+```
+
+## Tech stack
+
+Python · Pandas · NumPy · Scikit-learn · Matplotlib · Seaborn
+
+## License
+
+This project was developed for academic purposes as part of the Data Mining course at FSDM, USMBA.

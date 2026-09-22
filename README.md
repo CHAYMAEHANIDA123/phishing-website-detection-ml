@@ -2,7 +2,7 @@
 
 Academic project comparing 5 supervised machine learning models to automatically detect phishing websites, based on URL and domain-based features.
 
-**Authors:** Chaymae Hanida, Aya El Hadri
+**Author:** Chaymae Hanida
 **Institution:** Faculty of Sciences Dhar El Mahraz (FSDM), Sidi Mohamed Ben Abdellah University (USMBA), Fes, Morocco
 **Status:** Completed — formally documented and presented before an academic jury.
 

@@ -1,1 +1,10 @@
 
+version: "3.9"
+
+services:
+  phishing-api:
+    build: .
+    container_name: phishing-detection-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

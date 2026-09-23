@@ -84,6 +84,12 @@ python train_and_save.py
 uvicorn api.main:app --reload
 ```
 
+### Run with Docker
+
+```bash
+docker-compose up --build
+```
+
 API docs available at `http://127.0.0.1:8000/docs`
 
 ### Example request
@@ -117,12 +123,4 @@ Response:
 }
 ```
 
-> Note: the feature names above must match exactly the column names in `data/phishing.csv` (minus `Index` and `class`).
-
-## Tech stack
-
-Python · Pandas · NumPy · Scikit-learn · FastAPI · Matplotlib · Seaborn
-
-## License
-
-This project was developed for academic purposes as part of the Data Mining course at FSDM, USMBA.
+> Note: the feature names above must match exactly the column names in `data/phishing.csv` (minus `Index` and `class`).c purposes as part of the Data Mining course at FSDM, USMBA.
